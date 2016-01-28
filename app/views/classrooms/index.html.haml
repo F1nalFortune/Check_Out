@@ -1,0 +1,13 @@
+%h1#main_header All classrooms
+%hr
+- if @classrooms.any?
+  - @classrooms.each do |classroom|
+    = link_to classroom.name, classroom_path(classroom)
+    = classroom.code
+    = button_to 'Edit', edit_classroom_path(classroom), method: 'get'
+    = button_to 'Destroy', classroom_path(classroom), method: 'delete', data: {confirm: 'Really delete this classroom?'}
+    %br
+- else
+  %h3#no_classrooms_header No classrooms JA RULE BABY!!
+%hr
+= link_to 'New Classroom', new_classroom_path, id: 'new_classroom_link'
